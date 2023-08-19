@@ -1,0 +1,167 @@
+@import "bootstrap/scss/bootstrap";
+
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+@import "bootstrap-icons/font/bootstrap-icons";
+
+$primary: #5764f1;
+
+#nav {
+    background: linear-gradient(black, rgba(0, 0, 0, 0));
+    width: 100%;
+    height: 80px;
+}
+
+body {
+    // discord them color
+    background: linear-gradient(#202225, $primary) no-repeat center center fixed;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+.container-height{
+    height: auto;
+    @include media-breakpoint-up(md) {
+        height: 100vh;
+    }
+}
+
+.introduction{
+    height: 100vh;
+    @include media-breakpoint-up(md) {
+        height: auto;
+    }
+}
+
+.footer{
+    background: linear-gradient(rgba(0, 0, 0, 0), black);
+    height: 100px;
+}
+
+.github {
+    &:hover {
+        color: #fff;
+        background-color: #3d3d3d;
+    }
+
+    color: #fff;
+    background-color: black;
+}
+
+.btn-pulse{
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 0 0 var(--bs-primary);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--bs-primary);
+    }
+    100% {
+        box-shadow: 0 0 0 10px rgba(var(--bs-primary-rgb), 0);
+    }
+}
+
+.video{
+    animation: floating 3s ease-in-out infinite;
+    position: relative;
+    border-radius: 20px;
+    @include media-breakpoint-up(xs) {
+        width: 100%;
+        height: auto;
+        transform: translate(0)
+    }
+    @include media-breakpoint-up(sm) {
+        width: 100%;
+        height: auto;
+        transform: translateX(0);
+    }
+    @include media-breakpoint-up(md) {
+        width: 100%;
+        height: auto;
+        transform: translateX(0);
+    }
+    @include media-breakpoint-up(lg) {
+        height: 420px;
+        width: auto;
+        transform: translateX(0);
+    }
+    @include media-breakpoint-up(xl) {
+        height: 500px;
+        width: auto;
+        transform: translateX(0);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.bubbles {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    left: var(--bubble-left-offset);
+    bottom: calc(0px - var(--bubble-size));
+    display: block;
+    width: var(--bubble-size);
+    height: var(--bubble-size);
+    border-radius: 50%;
+    animation: float-up var(--bubble-float-duration) var(--bubble-float-delay) ease-in;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: hsla(183, 100%, 85%, 0.3);
+        border-radius: inherit;
+        animation: var(--bubble-sway-type) var(--bubble-sway-duration) var(--bubble-sway-delay) ease-in-out alternate infinite;
+        box-shadow: 0 0 5px 0 rgba(183, 100%, 85%, 0.3);
+
+    }
+}
+
+@keyframes float-up {
+    to {
+        transform: translateY(-175vh);
+    }
+}
+
+@keyframes sway-left-to-right {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes sway-right-to-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
