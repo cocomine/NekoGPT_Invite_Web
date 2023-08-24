@@ -1,9 +1,10 @@
+$primary: #5764f1;
 @import "bootstrap/scss/bootstrap";
 
 $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
 @import "bootstrap-icons/font/bootstrap-icons";
 
-$primary: #5764f1;
+
 
 #nav {
     background: linear-gradient(black, rgba(0, 0, 0, 0));
@@ -94,8 +95,6 @@ body {
         transform: rotate(-10deg) translate(100px, -40%);
     }
 }
-
-
 
 #github {
     &:hover {

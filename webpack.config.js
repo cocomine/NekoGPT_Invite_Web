@@ -4,6 +4,7 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require("webpack");
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     mode: 'development',
@@ -18,7 +19,8 @@ module.exports = {
         hot: true
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new HtmlWebpackPlugin({template: './src/index.html'}),
+        new miniCssExtractPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
@@ -29,16 +31,19 @@ module.exports = {
             {
                 test: /\.html$/i,
                 loader: "html-loader",
-            },{
-                test: /\.(png|svg|jpg|jpeg|gif|webp|woff2|webm|mp4)$/i,
+            }, {
+                test: /\.(png|svg|jpg|jpeg|gif|webp|woff2|woff|webm|mp4)$/i,
                 type: "asset/resource",
+                generator: {
+                    filename: 'assets/[hash][ext]'
+                }
             },
             {
                 test: /\.(scss)$/,
                 use: [
                     {
-                        // Adds CSS to the DOM by injecting a `<style>` tag
-                        loader: 'style-loader'
+                        // Extracts CSS for each JS file that includes CSS
+                        loader: miniCssExtractPlugin.loader
                     },
                     {
                         // Interprets `@import` and `url()` like `import/require()` and will resolve them
