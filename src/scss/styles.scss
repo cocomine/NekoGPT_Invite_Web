@@ -72,27 +72,47 @@ body {
 
 %section{
     position: relative;
-    height: 500px;
+    height: 400px;
+    @include media-breakpoint-up(lg) {
+        height: 500px;
+    }
     img{
         border-radius: 20px;
         position: absolute;
-        width: 400px;
+        width: 300px;
         top: 0;
-        left: 0;
         z-index: 2;
+        transform: translate(-50%, -40%);
+        left: 50%;
+        @include media-breakpoint-up(md) {
+            width: 350px;
+        }
+        @include media-breakpoint-up(lg) {
+            width: 350px
+        }
+        @include media-breakpoint-up(xl) {
+            width: 400px
+        }
     }
 }
 #section-1, #section-3{
     @extend %section;
     img{
-        transform: rotate(10deg) translate(100px, -40%);
+
+        @include media-breakpoint-up(lg) {
+            left: 0;
+            transform: rotate(10deg) translate(100px, -40%);
+        }
     }
 }
 
 #section-2, #section-4{
     @extend %section;
     img{
-        transform: rotate(-10deg) translate(100px, -40%);
+        @include media-breakpoint-up(lg) {
+            left: 0;
+            transform: rotate(-10deg) translate(50px, -40%);
+        }
     }
 }
 
@@ -172,9 +192,9 @@ body {
     position: fixed;
     z-index: -10;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 
     .bubble {
